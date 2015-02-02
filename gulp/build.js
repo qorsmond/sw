@@ -79,8 +79,13 @@ gulp.task('misc', function () {
     .pipe(gulp.dest(paths.dist + '/'));
 });
 
+gulp.task('sw', function () {
+  return gulp.src(paths.src + '/**/service-worker.js')
+    .pipe(gulp.dest(paths.dist + '/'));
+});
+
 gulp.task('clean', function (done) {
   $.del([paths.dist + '/', paths.tmp + '/'], done);
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'misc']);
+gulp.task('build', ['html', 'images', 'fonts', 'misc', 'sw']);
